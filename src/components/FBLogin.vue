@@ -1,5 +1,5 @@
 <template>
-  <v-facebook-login-scope v-model="vModel" v-bind="$props" v-on="$listeners">
+  <v-facebook-login-scope v-model="vModel" v-bind="$props" v-on="$listeners" ref="scopeComponent">
     <button
       slot-scope="scope"
       class="v-facebook-login"
@@ -58,6 +58,11 @@ export default {
   data: () => ({
     token
   }),
+  methods: {
+    logout() {
+      this.$refs.scopeComponent.logout()
+    }
+  },
   computed: {
     vModel: {
       get() {
